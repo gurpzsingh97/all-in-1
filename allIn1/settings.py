@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,7 @@ SECRET_KEY = 'django-insecure-yxo1$ni_%ga0eszc@ny#&86v%x(%(ex7fz6h1+swnqs8(35@qf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['all-in-1.herokuapp.com','localhost']
 
 
 # Application definition
@@ -103,13 +104,18 @@ WSGI_APPLICATION = 'allIn1.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
+
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse('postgres://ltonhkooabqbhu:ef402d4c253bcb368e065c8de8e5d37bfc9f0aa3abc7c891404f628495ca1c50@ec2-3-217-14-181.compute-1.amazonaws.com:5432/dci605t3rin5fd')
+    }
+else:
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
