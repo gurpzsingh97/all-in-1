@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block extra_title %}
+- Dictionary
+{% endblock %}
+
+{% block content %}
+
+<div class="text-center mt-5">
+    <h1>Word of the day is...</h1>
+</div>
+<div class="conatainer w-50 offset-5">
+    <div class="row">
+        <div class="col-4">
+            <form class='navbar-form' action="{% url 'dictionary' %}" method="GET">
+                <div class="input-group rounded">
+                    <input class="form-control" type="search" name ="q"placeholder="Search" aria-label="Search" autofocus>
+                    <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-6 text-center">
+            <h2>{{ query }}</h2>
+            {% if pronouncing != 'N/A' %}
+                <p>{{ pronouncing }}</p>
+            {% endif %}
+            {% if audios != 'N/A' %}
+                <audio id="nyan" src="{{ audios }}" preload="metadata" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="btn" id="nyan-btn"><i class="fa-solid fa-circle-play"></i></a>
+            {% else %}
+                <p style="font-size:75%;">No audio</p>
+            {% endif %}
+        </div>
+        <div class="col-6 text-center">
+            {% if definition_list|length > 0 %}
+            <ul class="list-group">                
+                {% for key in definition_list %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ key.definition }}
+                    <span class="badge bg-primary rounded-pill">{{ key.partOfSpeech }}</span>
+                </li>
+                {% endfor %}                
+            </ul>
+            {% else %}
+                <div class="btn btn-lg"><a href="{% url 'dictionary' %}"></a></div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+    var nyan = document.getElementById('nyan');
+    var nyanBtn = document.getElementById('nyan-btn');
+
+    function playPause(song){
+    if (song.paused && song.currentTime >= 0 && !song.ended) {
+        song.play();
+    } else {
+        song.pause();
+    }
+    }
+
+    function reset(btn, song){
+    if(btn.classList.contains('playing')){
+        btn.classList.toggle('playing');
+    }
+    song.pause();
+    song.currentTime = 0;
+    }
+
+    function progress(btn, song){
+    setTimeout(function(){
+        var end = song.duration; 
+        var current = song.currentTime;
+        var percent = current/(end/100);
+        //check if song is at the end
+        if(current==end){
+            reset(btn, song);
+        }
+        progress(btn, song);     
+    }, 1000);
+    }
+
+    nyanBtn.addEventListener('click', function(){
+    nyanBtn.classList.toggle('playing');
+    playPause(nyan);
+    progress(nyanBtn, nyan);
+    });
+</script>
+
+{% endblock %}
