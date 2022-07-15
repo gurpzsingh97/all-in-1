@@ -1,1 +1,1 @@
-web: gunicorn all-in-1.wsgi:application
+web: gunicorn allIn1.wsgi:application
