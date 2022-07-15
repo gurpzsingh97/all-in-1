@@ -107,7 +107,7 @@ WSGI_APPLICATION = 'allIn1.wsgi.application'
 
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
-        'default': dj_database_url.parse('postgres://ltonhkooabqbhu:ef402d4c253bcb368e065c8de8e5d37bfc9f0aa3abc7c891404f628495ca1c50@ec2-3-217-14-181.compute-1.amazonaws.com:5432/dci605t3rin5fd')
+        'default': dj_database_url.parse('DATABASE_URL')
     }
 else:
     DATABASES = {
