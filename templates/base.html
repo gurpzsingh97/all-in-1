@@ -41,53 +41,30 @@
   {% block extra_js %}
   {% endblock %}
 
-  <title>All in 1{% block extra_title %}{% endblock %}</title>
+  <title>Manny Weds Alisha{% block extra_title %}{% endblock %}</title>
 </head>
 
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand" href="{% url 'home' %}">All in 1</a>
-        <div class='mx-5 col-lg-4 d-none d-lg-block'>
-
-          <form class='navbar-form' action="{% url 'home' %}" method="GET">
-            <div class="input-group rounded">
-              <input class="form-control" type="search" name ="q"placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
-              </span>
-            </div>
-          </form>
-
-        </div>
-        <button class="navbar-toggler text-uppercase font-weight-bold text-white rounded" type="button"
-          data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-          aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fas fa-bars"></i>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ms-auto">
-            {% if request.user.is_authenticated %}
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'account_logout' %}">Logout</a></li>
-            {% else %}
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'account_login' %}">LogIn</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'account_signup' %}">SignUp</a></li>
-            {% endif %}
-            <li class="nav-item mx-0 mx-lg-1 d-lg-none">
-              <form class='navbar-form' action="{% url 'home' %}" method="GET">
-                <div class="input-group rounded">
-                  <input class="form-control" type="search" name ="q"placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
-                  </span>
-                </div>
-              </form>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <header>
+      <nav class="navbar">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#our-story">Our Story</a>
+          </li>
+          <li class="nav-item">
+            <a href="#">Wedding</a>
+          </li>
+          <li class="nav-item">
+            <a href="#">RSVP</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    
 
   </header>
 
