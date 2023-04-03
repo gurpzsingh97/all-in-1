@@ -6,16 +6,16 @@
 
 <header class="masthead">
     <div class="container">
-        <div class="masthead-subheading">Welcome To Our Studio!</div>
-        <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
-        <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
+        <div class="masthead-subheading">Sept 29</div>
+        <div class="masthead-heading text-uppercase">Manny Weds Alisha</div>
+        <a class="btn btn-primary btn-xl text-uppercase" href="#services">Youre invited!!!!</a>
     </div>
 </header>
 <!-- Services-->
 <section class="page-section" id="services">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">Services</h2>
+            <h2 class="section-heading text-uppercase">OUR STORY</h2>
             <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
         </div>
         <div class="row text-center">
@@ -24,7 +24,7 @@
                     <i class="fas fa-circle fa-stack-2x text-primary"></i>
                     <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
                 </span>
-                <h4 class="my-3">E-Commerce</h4>
+                <h4 class="my-3">Day 1</h4>
                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
             </div>
             <div class="col-md-4">
@@ -40,7 +40,7 @@
                     <i class="fas fa-circle fa-stack-2x text-primary"></i>
                     <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
                 </span>
-                <h4 class="my-3">Web Security</h4>
+                <h4 class="my-3">N</h4>
                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
             </div>
         </div>
@@ -276,7 +276,7 @@
 <section class="page-section" id="contact">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">Contact Us</h2>
+            <h2 class="section-heading text-uppercase">RSVP</h2>
             <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
         </div>
         <!-- * * * * * * * * * * * * * * *-->
@@ -286,30 +286,30 @@
         <!-- To make this form functional, sign up at-->
         <!-- https://startbootstrap.com/solution/contact-forms-->
         <!-- to get an API token!-->
-        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+        <form id="contactForm" method="post" action="{% url 'home' %}">
             <div class="row align-items-stretch mb-5">
                 <div class="col-md-6">
                     <div class="form-group">
                         <!-- Name input-->
-                        <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
+                        <input class="form-control" id="name" name="name"type="text" placeholder="Family Name" data-sb-validations="required" />
                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                     </div>
                     <div class="form-group">
                         <!-- Email address input-->
-                        <input class="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
+                        <input class="form-control" name="email" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
                         <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
                         <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
                     </div>
                     <div class="form-group mb-md-0">
                         <!-- Phone number input-->
-                        <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
+                        <input class="form-control" name="number"id="number" type="number" placeholder="number of people attending" data-sb-validations="required" />
                         <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group form-group-textarea mb-md-0">
                         <!-- Message input-->
-                        <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea>
+                        <textarea class="form-control" name="song_requests" id="song_requests" placeholder="song_requests" data-sb-validations="required"></textarea>
                         <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                     </div>
                 </div>
@@ -332,7 +332,7 @@
             <!-- an error submitting the form-->
             <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
             <!-- Submit Button-->
-            <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Send Message</button></div>
+            <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Submit</button></div>
         </form>
     </div>
 </section>
@@ -565,81 +565,6 @@
     </div>
 </div>
 
-
-<!--RSVP section -->
-
-<div class="container">
-    <div class="card">
-    <form method="POST" id="rsvp-form" class="form" action="{% url 'home' %}">
-      {% csrf_token %}
-      <h2 class="mb-4 text-center">RSVP</h2>
-      <div class="form-group">
-        <label for="gender-select" class="font-weight-bold">Please select which side you are RSVPing for:</label>
-        <select name="gender" id="gender-select" class="form-control">
-          <option value="girl">Girls Side</option>
-          <option value="boy">Boys Side</option>
-        </select>
-      </div>
-      <div id="girl-form" style="display:none;">
-        <h3 class="mb-4 text-center">RSVP (Girls Side)</h3>
-        <div class="form-group">
-          <label for="name" class="font-weight-bold">Name:</label>
-          <input type="text" name="name" id="name" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label for="email" class="font-weight-bold">Email:</label>
-          <input type="email" name="email" id="email" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label for="attending" class="font-weight-bold">Will you be attending?</label>
-          <div class="form-check">
-            <input type="radio" name="attending" id="attending-yes" class="form-check-input" value="yes" required>
-            <label for="attending-yes" class="form-check-label">Yes</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" name="attending" id="attending-no" class="form-check-input" value="no" required>
-            <label for="attending-no" class="form-check-label">No</label>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="song_request" class="font-weight-bold">Song Request:</label>
-          <input type="text" name="song_request" id="song_request" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-      <div id="boy-form" style="display:none;">
-        <h3 class="mb-4 text-center">RSVP (Boys Side)</h3>
-        <div class="form-group">
-          <label for="name" class="font-weight-bold">Name:</label>
-          <input type="text" name="name" id="name" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label for="email" class="font-weight-bold">Email:</label>
-          <input type="email" name="email" id="email" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label for="attending" class="font-weight-bold">Will you be attending?</label>
-          <div class="form-check">
-            <input type="radio" name="attending" id="attending-yes" class="form-check-input" value="yes" required>
-            <label for="attending-yes" class="form-check-label">Yes</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" name="attending" id="attending-no" class="form-check-input" value="no" required>
-            <label for="attending-no" class="form-check-label">No</label>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="song_request" class="font-weight-bold">Song Request:</label>
-          <input type="text" name="song_request" id="song_request" class="form-control">
-        </div>
-        
-      
-      <button type="submit" class="btn btn-primary">Submited</button>
-  
-    </form>
-</div>
-</div>
-  
 
 
 
