@@ -241,6 +241,52 @@
 {% endblock %}
 
 {% block postloadjs %}
+<script>
+    function initMap() {
+      var location = {lat: 51.4396, lng: -0.5874};
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: location,
+        zoom: 15
+      });
+      var marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        title: 'Fairmont Windsor Park'
+      });
+    }
+</script>
+<script>
+    // Set the target date for the countdown
+    var target_date = new Date('09/29/2023');
 
+    // Update the countdown every second
+    var countdown = setInterval(function() {
+        // Get the current date
+        var current_date = new Date();
 
+        // Calculate the time remaining until the target date
+        var time_remaining = target_date - current_date;
+
+        // Convert the time remaining to days, hours, minutes, and seconds
+        var days_remaining = Math.floor(time_remaining / (24 * 60 * 60 * 1000));
+        var hours_remaining = Math.floor((time_remaining / (60 * 60 * 1000)) % 24);
+        var minutes_remaining = Math.floor((time_remaining / (60 * 1000)) % 60);
+        var seconds_remaining = Math.floor((time_remaining / 1000) % 60);
+
+        // Update the HTML elements with the remaining time
+        document.getElementById('days').innerHTML = days_remaining + ' Days';
+        document.getElementById('hours').innerHTML = hours_remaining + ' Hours';
+        document.getElementById('minutes').innerHTML = minutes_remaining + ' Mins';
+        document.getElementById('seconds').innerHTML = seconds_remaining + ' Secs';
+
+        // If the target date has been reached, stop the countdown
+        if (time_remaining <= 0) {
+            clearInterval(countdown);
+            document.getElementById('days').innerHTML = '0 days';
+            document.getElementById('hours').innerHTML = '0 hours';
+            document.getElementById('minutes').innerHTML = '0 minutes';
+            document.getElementById('seconds').innerHTML = '0 seconds';
+        }
+    }, 1000);
+</script>
 {% endblock %}
