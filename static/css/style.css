@@ -94,11 +94,11 @@ header{
 }
 
 hr {
-  margin: 1rem 0;
-  color: inherit;
-  background-color: currentColor;
-  border: 0;
-  opacity: 0.25;
+  height: 1px; /* Sets the height of the line */
+  margin: 2rem auto; /* Centers the line horizontally and adds margin above and below */
+  border: none; /* Removes the default border */
+  background-color: #474242; /* Sets the background color of the line */
+  width: 80%; /* Sets the width of the line to 80% of the container */
 }
 
 #logo{
@@ -126,7 +126,7 @@ hr {
 }
 
 .container .overlay h1 {
-  font-size: 2.5em; /* Set the font size of the heading */
+  font-size: 3.5em; /* Set the font size of the heading */
   margin: 0;
   font-family: 'Dancing Script', cursive;
 }
@@ -135,6 +135,28 @@ hr {
   font-size: 1.2em; /* Set the font size of the paragraph */
   margin: 0;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont;
+}
+
+#zoom-text {
+  font-size: 0.4rem;
+  transform: scale(1);
+  transition: transform 3s, font-size 3s;
+}
+
+.slide-section {
+  position: relative;
+  opacity: 0;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.slide-up {
+  transform: translateY(30%);
+}
+
+.slide-section.visible {
+  transform: translate(0, 0);
+  opacity: 1;
+  transition-delay: 0.2s; /* delay the transition */
 }
 
 .countdown {
@@ -156,6 +178,7 @@ hr {
   border-radius: 5px;
 }
 
+
 hr:not([size]) {
   height: 1px;
 }
@@ -163,7 +186,7 @@ hr:not([size]) {
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Dosis', sans-serif;
   font-weight: 700;
   line-height: 1.2;
 }
@@ -11416,7 +11439,7 @@ header.masthead {
   padding-bottom: 6rem;
   text-align: center;
   color: #212529;
-  background-image: url("../../media/header-bg.jpg");
+  background-image: url("../../media/hero-image.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -11594,7 +11617,7 @@ header.masthead .masthead-heading {
   margin-left: 0;
   text-align: center;
   color: white;
-  border: 7px solid #e9ecef;
+  border: 2px solid #bda264;
   border-radius: 100%;
   background-size: cover; /* Scale the background image to cover the circle */
   background-position: center center; /* Center the background image inside the circle */
@@ -11803,3 +11826,121 @@ section#contact form#contactForm :-ms-input-placeholder {
   font-size: 0.9rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+form {
+  background-color: #fff;
+  padding: 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+  display: none;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.2s;
+}
+
+input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+#buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+#boys-button, #girls-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 0 20px;
+  transition: transform 0.2s;
+}
+
+#boys-button img, #girls-button img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#boys-button:hover, #girls-button:hover {
+  transform: scale(1.1);
+}
+
+form {
+  background-color: #FCEDDA;
+  font-family: 'Dosis', sans-serif;
+  text-align: center;
+  padding: 20px;
+  margin: 20px auto;
+  width: 100%;
+}
+
+form h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"], select, input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none !important;
+  border-radius: 5px !important;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+input[type="submit"] {
+  background-color: #BDA264;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #BDA264;
+  color: #000;
+}
+
+input:invalid {
+  box-shadow: none;
+}
+
+select {
+  margin-bottom: 20px;
+}
+
+select option {
+  color: #2C2F33;
+}
+
+
+
