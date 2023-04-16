@@ -1,41 +1,25 @@
 from django.shortcuts import render, redirect, reverse
-from .models import Girl, Boy
+from .models import GroomSide, BrideSide
 # Create your views here.
 
 def index(request):
-
-    if request.method == 'POST':
-        print("heloooooooooooooooooooooooooooooooooo")
-        gender = request.POST.get('gender')
-        if gender == 'girl':
-            attendingcheck = request.POST.get('attending', False)
-            if attendingcheck  == "yes":
-                boolVal = True
-            else:
-                boolVal = False
-            girl = Girl.objects.create(
-                name=request.POST.get('name'),
-                email=request.POST.get('email'),
-                attending = boolVal,
-                song_request=request.POST.get('song_request', ''),
-            )
-            girl.save()
-        elif gender == 'boy':
-            attendingcheck = request.POST.get('attending', False)
-            if attendingcheck  == "yes":
-                boolVal = True
-            else:
-                boolVal = False
-            boy = Boy.objects.create(
-                name=request.POST.get('name'),
-                email=request.POST.get('email'),
-                attending = boolVal,
-                song_request=request.POST.get('song_request', ''),
-            )
-            boy.save()
-        return redirect(reverse('home'))
-    else:
-        return render(request, 'home/index.html')
+    if request.method == "POST":
+        if request.POST["side"] == "groomSide":
+            groomside = GroomSide()
+            groomside.name = request.POST["name"]
+            groomside.attending = request.POST["attending"]
+            groomside.total_attending = request.POST["total_attending"]
+            groomside.coach_attending = request.POST["coach_attending"]
+            groomside.save()
+        if request.POST["side"] == "brideSide":
+            brideside = BrideSide()
+            brideside.name = request.POST["name"]
+            brideside.attending = request.POST["attending"]
+            brideside.total_attending = request.POST["total_attending"]
+            brideside.coach_attending = request.POST["coach_attending"]
+            brideside.save()
+            
+    return render(request, 'home/index.html')
 
 
     
