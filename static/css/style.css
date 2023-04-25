@@ -136,9 +136,19 @@ hr {
   margin: 0;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont;
 }
-h1, .h1{
-  font-family: 'Great Vibes', cursive;
+
+h1, .h1 {
+  font-family: 'Great Vibes', cursive !important;
   font-size: calc(2rem + 1.75vw);
+}
+
+.our-story-text h5 {
+  font-family: 'Great Vibes', cursive !important;
+  font-weight: 300 !important;
+}
+
+.alert{
+  background-color: #BDA264;
 }
 
 #zoom-text {
@@ -11896,3 +11906,4 @@ select {
 select option {
   color: #2C2F33;
 }
+
