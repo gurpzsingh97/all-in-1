@@ -5,13 +5,28 @@
 {% block content %}
 
 
+
+
 <header>
-    <div class="container" id="zoom-wrapper" >
-            <img src="https://all-in-1.s3.amazonaws.com/media/hero-image.jpg" alt="" width="100%">
-            <div class="overlay" id="zoom-text">
-                <h1>Manny & Alisha </h1>
-                <p>ARE GETTING MARRIED</p>
+    {% if messages %}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col text-center">
+                {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+                {% endfor %}
             </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="container" id="zoom-wrapper">
+        <img src="https://all-in-1.s3.amazonaws.com/media/hero-image.jpg" alt="" width="100%">
+        <div class="overlay" id="zoom-text">
+            <h1>Manny & Alisha </h1>
+            <p>ARE GETTING MARRIED</p>
+        </div>
     </div>
 </header>
 <!-- OUR STORY -->
@@ -209,7 +224,7 @@
         {% csrf_token %}
         <h3 class="text-center">Groom's RSVP Card</h3>
         <input type="hidden" id="side" name="side" value="groomSide" equired>
-        <input type="text" id="name" name="name" placeholder="Full Name" required>
+        <input type="text" id="name" name="name" placeholder="Full Name" pattern="[a-zA-Z ]+" required>
         <select id="attending" name="attending" required>
           <option value="" hidden>Will you be attending?</option>
           <option value="yes">Accept with Pleasure</option>
@@ -229,7 +244,7 @@
         {% csrf_token %}
         <h3 class="text-center">Bride's RSVP Card</h3>
         <input type="hidden" id="side" name="side" value="brideSide"required>
-        <input type="text" id="name" name="name" placeholder="Full Name" required>
+        <input type="text" id="name" name="name" placeholder="Full Name" pattern="[a-zA-Z ]+" required>
         <select id="attending" name="attending" required>
             <option value="" hidden>Will you be attending?</option>
             <option value="yes">Accept with Pleasure</option>

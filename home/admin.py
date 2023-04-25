@@ -5,7 +5,6 @@ from .models import BrideSide, GroomSide
 class GroomSideAdmin(admin.ModelAdmin):
     list_display=(
         'name',
-        'attending_choices',
         'attending',
         'total_attending',
         'coach_attending',
@@ -17,7 +16,6 @@ class GroomSideAdmin(admin.ModelAdmin):
 class BrideSideAdmin(admin.ModelAdmin):
     list_display=(
         'name',
-        'attending_choices',
         'attending',
         'total_attending',
         'song_request',
