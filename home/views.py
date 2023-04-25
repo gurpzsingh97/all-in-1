@@ -13,7 +13,10 @@ def index(request):
             groomside.coach_attending = request.POST["coach_attending"]
             groomside.song_request = request.POST["song_request"]
             groomside.save()
-            messages.success(request, "RSVP has been Submitted")
+            if request.POST["attending"] == 'yes':
+                messages.success(request, "Looking forward to seeing you!")
+            else:
+                messages.success(request, "Thank you for considering our invitation.")
             return redirect(reverse('home'))
         if request.POST["side"] == "brideSide":
             brideside = BrideSide()
@@ -22,7 +25,10 @@ def index(request):
             brideside.total_attending = request.POST["total_attending"]
             brideside.song_request = request.POST["song_request"]
             brideside.save()
-            messages.success(request, "RSVP has been Submitted")
+            if request.POST["attending"] == 'yes':
+                messages.success(request, "Looking forward to seeing you!")
+            else:
+                messages.success(request, "Thank you for considering our invitation.")
             return redirect(reverse('home'))
             
     return render(request, 'home/index.html')
