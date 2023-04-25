@@ -4,9 +4,8 @@ from django.db import models
 class GroomSide(models.Model):
     name = models.CharField(max_length=100)
     attending_choices = (
-        ('yes', 'Yes, I will be attending'),
-        ('no', 'No, I will not be attending'),
-        ('not_sure', 'Not sure yet'),
+        ('yes', 'Accept with Pleasure'),
+        ('no', 'Regretfully Decline'),
     )
     attending = models.CharField(max_length=10, choices=attending_choices)
     total_attending = models.IntegerField()
@@ -16,9 +15,8 @@ class GroomSide(models.Model):
 class BrideSide(models.Model):
     name = models.CharField(max_length=100)
     attending_choices = (
-        ('yes', 'Yes, I will be attending'),
-        ('no', 'No, I will not be attending'),
-        ('not_sure', 'Not sure yet'),
+        ('yes', 'Accept with Pleasure'),
+        ('no', 'Regretfully Decline'),
     )
     attending = models.CharField(max_length=10, choices=attending_choices)
     total_attending = models.IntegerField()
