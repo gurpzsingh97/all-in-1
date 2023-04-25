@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse
+from django.contrib import messages
 from .models import GroomSide, BrideSide
 # Create your views here.
 
@@ -12,6 +13,8 @@ def index(request):
             groomside.coach_attending = request.POST["coach_attending"]
             groomside.song_request = request.POST["song_request"]
             groomside.save()
+            messages.success(request, "RSVP has been Submitted")
+            return redirect(reverse('home'))
         if request.POST["side"] == "brideSide":
             brideside = BrideSide()
             brideside.name = request.POST["name"]
@@ -19,6 +22,8 @@ def index(request):
             brideside.total_attending = request.POST["total_attending"]
             brideside.song_request = request.POST["song_request"]
             brideside.save()
+            messages.success(request, "RSVP has been Submitted")
+            return redirect(reverse('home'))
             
     return render(request, 'home/index.html')
 
