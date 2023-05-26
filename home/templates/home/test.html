@@ -1,0 +1,95 @@
+<section class="page-section" id="rsvp" style="background-color: #BDA264;">
+    <div class="container slide-section slide-up">
+      <h1 class="text-center">Rsvp Card</h1>
+      <div class="row text-center ">
+        <div id="buttons-container">
+            <input type="button" style="background-color: #FCEDDA; width:40%;" class="btn" onclick="showBoysForm()" value="Groom RSVP">
+        </div>
+      </div>
+      <form id="boys-form" method="POST" action="{% url 'home' %}">
+        {% csrf_token %}
+        <h3 class="text-center">Groom's RSVP Card</h3>
+        <input type="hidden" id="side" name="side" value="groomSide" equired>
+        <input type="text" id="name" name="name" placeholder="Full Name" pattern="[a-zA-Z ]+" required>
+        <select id="attending" name="attending" required>
+          <option value="" hidden>Will you be attending?</option>
+          <option value="yes">Accept with Pleasure</option>
+          <option value="no">Regretfully Decline</option>
+        </select>
+        <input type="number" id="total_attending" name="total_attending" min="0" placeholder="Number of Guests" required>
+        <input type="number" id="coach_attending" name="coach_attending" min="0" placeholder="How many guests travelling by Coach?" required>
+        <input type="text" id="song_request" name="song_request" placeholder="Any Song Request?">
+        <input class="text-center" type="submit" value="Submit">
+      </form>
+      <div class="row text-center ">
+        <div id="buttons-container">
+            <input type="button" style="background-color: #FCEDDA; width:40%;" class="btn" onclick="showGirlsForm()" value="Bride RSVP">
+        </div>
+      </div>
+      <form id="girls-form" method="POST" action="{% url 'home' %}">
+        {% csrf_token %}
+        <h3 class="text-center">Bride's RSVP Card</h3>
+        <input type="hidden" id="side" name="side" value="brideSide"required>
+        <input type="text" id="name" name="name" placeholder="Full Name" pattern="[a-zA-Z ]+" required>
+        <select id="attending" name="attending" required>
+            <option value="" hidden>Will you be attending?</option>
+            <option value="yes">Accept with Pleasure</option>
+            <option value="no">Regretfully Decline</option>
+        </select>
+        <input type="number" id="total_attending" name="total_attending" min="0" placeholder="Number of Guests" required>
+        <input type="text" id="song_request" name="song_request" placeholder="Any Song Request?">
+        <input class="text-center" type="submit" value="Submit">
+      </form> 
+    </div>
+</section>
+
+
+
+
+<script>
+  const attendingSelect = document.getElementById('attending_gurdwara');
+  const attendingSelectReception = document.getElementById('attending_reception');
+  const additionalForm = document.getElementById('additional-form_gurdwara');
+  const additionalFormReception = document.getElementById('additional-form_reception');
+  additionalForm.style.display = 'none';
+  additionalFormReception.style.display = 'none';
+
+  const totalAttendingField = document.getElementById('total_attending_gurdwara');
+  const coachAttendingField = document.getElementById('coach_attending_gurdwara');
+  const totalAttendingFieldReception = document.getElementById('total_attending_reception');
+  const coachAttendingFieldReception = document.getElementById('coach_attending_reception');
+  
+
+  // Add event listener for change event
+  attendingSelect.addEventListener('change', function() {
+  // Check if the selected value is "yes"
+  if (attendingSelect.value === 'yes') {
+      // Show the additional form
+      additionalForm.style.display = 'block';
+      totalAttendingField.required = true;
+      coachAttendingField.required = true;
+  } else {
+      // Hide the additional form
+      additionalForm.style.display = 'none';
+      totalAttendingField.required = false;
+      coachAttendingField.required = false;
+  }
+  });
+
+  // Add event listener for change event
+  attendingSelectReception.addEventListener('change', function() {
+      // Check if the selected value is "yes"
+      if (attendingSelectReception.value === 'yes') {
+          // Show the additional form
+          additionalFormReception.style.display = 'block';
+          totalAttendingFieldReception.required = true;
+          coachAttendingFieldReception.required = true;
+      } else {
+          // Hide the additional form
+          additionalFormReception.style.display = 'none';
+          totalAttendingFieldReception.required = false;
+          coachAttendingFieldReception.required = false;
+      }
+      });
+
+</script>
